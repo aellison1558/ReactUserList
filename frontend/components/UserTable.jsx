@@ -1,8 +1,28 @@
 import React from 'react'
+import UserTableRow from './UserTableRow.jsx'
 
 class UserTable extends React.Component {
 	constructor(props) {
 		super(props)
+		this.state = {selected: []}
+
+		this.selectRow = this.selectRow.bind(this);
+		this.deselectRow = this.deselectRow.bind(this);
+	}
+
+	selectRow(user) {
+		const updatedSelected = this.state.selected;
+		updatedSelected.push(user);
+		this.setState({selected: updatedSelected})
+	}
+
+	deselectRow(user) {
+		const updatedSelected = this.state.selected;
+		const index = updatedSelected.indexOf(user);
+		if (index > -1) {
+			updatedSelected.splice(index, 1)
+		}
+		this.setState({selected: updatedSelected})
 	}
 
 	render() {
@@ -56,9 +76,9 @@ bs: "synergize scalable supply-chains"
 }]
 		return(
 			<div>
-				<span>x of total selected</span>
+				<span>{this.state.selected.length} of {examples.length} selected</span>
 				<ul>
-					{examples.map(user => <li><UserTableRow user=user /></li>)}
+					{examples.map(user => <li key={user.id}><UserTableRow user={user} selectRow={this.selectRow} deselectRow={this.deselectRow} /></li>)}
 				</ul>
 				<button>Confirm button</button>
 			</div>
