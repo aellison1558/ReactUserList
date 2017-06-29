@@ -1,5 +1,5 @@
 module.exports = {
-	entry: "./entry.js",
+	entry: "./entry.jsx",
 	output: {
 		path: __dirname,
 		filename: "bundle.js"
@@ -9,15 +9,12 @@ module.exports = {
 			{
 				test: [/\.jsx?$/, /\.js?$/],
 				exclude: /(node_modules)/,
-				loader: 'babel',
+				loader: 'babel-loader',
 				query: {
 					presets: ['es2015', 'react']
 				}
 			}
 		]
 	},
-	devtool: 'source-map',
-	resolve: {
-		extensions: ["", ".js", ".jsx"]
-	}
+	devtool: 'source-map'
 };
