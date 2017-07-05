@@ -17,16 +17,19 @@ class UserTableRow extends React.Component {
 
 	render() {
 		return(
-			<div>
-				<form>
+			<div className='row'>
+				<form className='row-check'>
 					<input type='checkbox' name='selected' onChange={this.handleChange} />
 				</form>
-				<div className='row-name'>
-					{this.props.user.name}
+				<div className='row-content'>
+					<div className='row-name row-content-inner'>
+						{this.props.user.name}
+					</div>
+					<div className='row-email row-content-inner'>
+						{this.props.user.email}
+					</div>
 				</div>
-				<div className='row-email'>
-					{this.props.user.email}
-				</div>
+				
 			</div>
 		)
 	}
