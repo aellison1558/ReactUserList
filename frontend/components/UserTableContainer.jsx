@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import UserTable from './UserTable.jsx'
-import fetchUsers from '../actions/ApiActions.js'
+import fetchUsers from '../ApiUtil.js'
 
 const mapStateToProps = (state, ownProps) => {
 	return {
